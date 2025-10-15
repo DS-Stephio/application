@@ -13,10 +13,14 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.preprocessing import OneHotEncoder
 import seaborn as sns
-
-
-
-
+import argparse
+parser = argparse.ArgumentParser(description="Indiquer le nombre d'arbres pour le random forest?")
+parser.add_argument(
+    "--nb_trees", type=int, default=20, help="Nombre d'arbres"
+)
+args = parser.parse_args()
+print(args.nb_trees)
+N_TREES=(args.nb_trees)
 
 # os.chdir('/home/coder/work/ensae-reproductibilite-application')
 TrainingData = pd.read_csv("data.csv")
@@ -28,7 +32,8 @@ TrainingData["Ticket"].str.split("/").str.len()
 
 TrainingData["Name"].str.split(",").str.len()
 
-N_TREES = 20
+
+#N_TREES = 20
 MAX_DEPTH = None
 MAX_FEATURES = "sqrt"
 
